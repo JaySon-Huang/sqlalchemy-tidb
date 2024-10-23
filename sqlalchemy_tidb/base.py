@@ -11,21 +11,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 from sqlalchemy import util, sql
-from sqlalchemy.dialects.mysql.base import MySQLDialect, MySQLCompiler, \
-    MySQLDDLCompiler, MySQLTypeCompiler, MySQLIdentifierPreparer, BIT
+from sqlalchemy.dialects.mysql.base import MySQLDialect, \
+    MySQLTypeCompiler, MySQLIdentifierPreparer, BIT
 from sqlalchemy.engine import default, reflection
 
 from . import reflection as _reflection
+from .compiler import TiDBCompiler, TiDBDDLCompiler
 
 BIT = BIT
-
-
-class TiDBCompiler(MySQLCompiler):
-    pass
-
-
-class TiDBDDLCompiler(MySQLDDLCompiler):
-    pass
 
 
 class TiDBTypeCompiler(MySQLTypeCompiler):

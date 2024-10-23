@@ -12,6 +12,9 @@
 # limitations under the License.
 from sqlalchemy.dialects import registry as _registry
 
+from .ddl import VectorIndex, TiFlashReplica, Table, MetaData
+from .ext.declarative import get_declarative_base
+
 __version__ = "1.0.0"
 
 _registry.register(
@@ -42,4 +45,13 @@ _registry.register(
     "tidb.pymysql",
     "sqlalchemy_tidb.dialect.pymysql",
     "TiDBDialect_pymysql",
+)
+
+__all__ = (
+    "get_declarative_base",
+    "MetaData",
+    "Table",
+    "VectorType",
+    "VectorIndex",
+    "TiFlashReplica",
 )
