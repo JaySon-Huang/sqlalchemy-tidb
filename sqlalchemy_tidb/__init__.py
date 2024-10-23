@@ -15,7 +15,31 @@ from sqlalchemy.dialects import registry as _registry
 __version__ = "1.0.0"
 
 _registry.register(
+    "tidb",
+    "sqlalchemy_tidb.dialect.mysqldb",
+    "TiDBDialect_mysqldb"
+)
+
+_registry.register(
+    "tidb.cmysql",
+    "sqlalchemy_tidb.dialect.cmysql",
+    "TiDBDialect_cmysql",
+)
+
+_registry.register(
     "tidb.mysqlconnector",
-    "sqlalchemy_tidb.mysqlconnector",
+    "sqlalchemy_tidb.dialect.mysqlconnector",
     "TiDBDialect_mysqlconnector",
+)
+
+_registry.register(
+    "tidb.mysqldb",
+    "sqlalchemy_tidb.dialect.mysqldb",
+    "TiDBDialect_mysqldb",
+)
+
+_registry.register(
+    "tidb.pymysql",
+    "sqlalchemy_tidb.dialect.pymysql",
+    "TiDBDialect_pymysql",
 )

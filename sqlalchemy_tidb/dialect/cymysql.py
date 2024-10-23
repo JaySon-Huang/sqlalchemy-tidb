@@ -15,7 +15,7 @@ from sqlalchemy.dialects.mysql.base import BIT
 from sqlalchemy.dialects.mysql.cymysql \
     import MySQLDialect_cymysql, _cymysqlBIT
 
-from .base import TiDBDialect
+from ..base import TiDBDialect
 
 
 class TiDBDialect_cymysql(MySQLDialect_cymysql):
@@ -23,5 +23,6 @@ class TiDBDialect_cymysql(MySQLDialect_cymysql):
 
     colspecs = util.update_copy(TiDBDialect.colspecs, {BIT: _cymysqlBIT})
 
-
-dialect = TiDBDialect_cymysql
+    @classmethod
+    def import_dbapi(cls):
+        return __import__("cymysql")

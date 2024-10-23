@@ -10,18 +10,18 @@
 # distributed under the License is distributed on an "AS IS" BASIS,
 # See the License for the specific language governing permissions and
 # limitations under the License.
-from sqlalchemy.dialects.mysql.mysqlconnector \
-    import MySQLDialect_mysqlconnector
+from sqlalchemy.dialects.mysql.pymysql \
+    import MySQLDialect_pymysql
 
-from .base import TiDBCompiler
-from .base import TiDBDDLCompiler
-from .base import TiDBDialect
-from .base import TiDBIdentifierPreparer
+from ..base import TiDBCompiler
+from ..base import TiDBDDLCompiler
+from ..base import TiDBDialect
+from ..base import TiDBIdentifierPreparer
 
-
-class TiDBDialect_mysqlconnector(MySQLDialect_mysqlconnector, TiDBDialect):
+class TiDBDialect_pymysql(MySQLDialect_pymysql, TiDBDialect):
     name = "tidb"
-    driver = "mysqlconnector"
+    driver = "pymysql"
+
     supports_statement_cache = True
 
     supports_unicode_binds = True
@@ -32,10 +32,17 @@ class TiDBDialect_mysqlconnector(MySQLDialect_mysqlconnector, TiDBDialect):
     supports_native_decimal = True
 
     default_paramstyle = "format"
+
+    preparer = TiDBIdentifierPreparer
     ddl_compiler = TiDBDDLCompiler
     statement_compiler = TiDBCompiler
 
-    preparer = TiDBIdentifierPreparer
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
 
+    def initialize(self, connection):
+        super().initialize(connection)
 
-dialect = TiDBDialect_mysqlconnector
+    @classmethod
+    def import_dbapi(cls):
+        return __import__("pymysql")
