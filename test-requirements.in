@@ -10,5 +10,5 @@ mysqlclient
 mysql-connector
 pytest
 tox
-sqlalchemy
+sqlalchemy>=1.4.51,<2
 alembic

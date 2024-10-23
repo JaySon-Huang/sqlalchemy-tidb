@@ -45,7 +45,7 @@ pyproject-api==1.8.0
     # via tox
 pytest==8.3.3
     # via -r test-requirements.in
-sqlalchemy==2.0.36
+sqlalchemy==1.4.54
     # via
     #   -r test-requirements.in
     #   alembic
@@ -59,7 +59,6 @@ tox==4.23.2
 typing-extensions==4.12.2
     # via
     #   alembic
-    #   sqlalchemy
     #   tox
 virtualenv==20.27.0
     # via tox
