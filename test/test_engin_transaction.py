@@ -1359,8 +1359,10 @@ class FutureTransactionTest(fixtures.FutureEngineMixin, fixtures.TablesTest):
         with testing.db.begin() as conn:
             assert_raises_message(
                 exc.InvalidRequestError,
-                "This connection has already begun a transaction; "
-                "isolation_level may not be altered until transaction end",
+                "This connection has already initialized a SQLAlchemy "
+                "Transaction() object via begin() or autobegin; "
+                "isolation_level may not be altered unless rollback() or "
+                "commit() is called first.",
                 conn.execution_options,
                 isolation_level="AUTOCOMMIT",
             )
@@ -1373,8 +1375,10 @@ class FutureTransactionTest(fixtures.FutureEngineMixin, fixtures.TablesTest):
 
             assert_raises_message(
                 exc.InvalidRequestError,
-                "This connection has already begun a transaction; "
-                "isolation_level may not be altered until transaction end",
+                "This connection has already initialized a SQLAlchemy "
+                "Transaction() object via begin() or autobegin; "
+                "isolation_level may not be altered unless rollback() or "
+                "commit() is called first.",
                 conn.execution_options,
                 isolation_level="AUTOCOMMIT",
             )
@@ -1613,7 +1617,10 @@ class FutureTransactionTest(fixtures.FutureEngineMixin, fixtures.TablesTest):
 
             assert_raises_message(
                 exc.InvalidRequestError,
-                "a transaction is already begun for this connection",
+                "This connection has already initialized a SQLAlchemy "
+                "Transaction() object via begin() or autobegin; "
+                "isolation_level may not be altered unless rollback() or "
+                "commit() is called first.",
                 conn.begin,
             )
 
