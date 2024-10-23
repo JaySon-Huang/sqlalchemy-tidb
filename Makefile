@@ -10,11 +10,15 @@
 # distributed under the License is distributed on an "AS IS" BASIS,
 # See the License for the specific language governing permissions and
 # limitations under the License.
+ENV=./.venv
+
 .PHONY: all
 all: test lint
 
 .PHONY: bootstrap
 bootstrap:
+	@mkdir -p ${ENV}
+	virtualenv ${ENV}
 	pip install -r dev-requirements.txt
 	pip install -r test-requirements.txt
 
@@ -25,3 +29,7 @@ test:
 .PHONY: lint
 lint:
 	tox -e lint
+
+.PHONY: update-requirements
+update-requirements:
+	tox -e pip-compile

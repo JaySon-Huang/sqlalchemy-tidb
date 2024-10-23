@@ -8,7 +8,7 @@ This adds compatibility for [TiDB](https://github.com/pingcap/tidb) to SQLAlchem
 
 - TiDB 4.x and newer
 - SQLAlchemy 1.4.x
-- Python 3.6 and newer
+- Python 3.8 and newer
 
 ## Installation
 
