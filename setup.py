@@ -22,7 +22,7 @@ with open(os.path.join(os.path.dirname(__file__), "sqlalchemy_tidb", "__init__.p
 with open(os.path.join(os.path.dirname(__file__), "README.md")) as v:
     README = v.read()
 
-dependencies = ["sqlalchemy>=1.4,<2"]
+dependencies = ["sqlalchemy>=2.0,<2.1"]
 
 setup(
     name="sqlalchemy-tidb",
@@ -49,9 +49,9 @@ setup(
     zip_safe=False,
     entry_points={
         "sqlalchemy.dialects": [
-            "tidb = sqlalchemy_tidb.mysqlconnector:TiDBDialect_mysqlconnector",
-            "tidb.pyodbc = sqlalchemy_tidb.pyodbc:TiDBDialect_pyodbc",
-            "tidb.mysqlconnector = sqlalchemy_tidb.mysqlconnector:TiDBDialect_mysqlconnector",
+            "tidb = sqlalchemy_tidb.dialect.mysqlconnector:TiDBDialect_mysqlconnector",
+            "tidb.pyodbc = sqlalchemy_tidb.dialect.pyodbc:TiDBDialect_pyodbc",
+            "tidb.mysqlconnector = sqlalchemy_tidb.dialect.mysqlconnector:TiDBDialect_mysqlconnector",
         ]
     },
 )

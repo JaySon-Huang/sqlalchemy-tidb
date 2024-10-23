@@ -39,4 +39,4 @@ class TiDBDialect_mysqldb(MySQLDialect_mysqldb, TiDBDialect):
 
     @classmethod
     def import_dbapi(cls):
-        return __import__("mysqldb")
+        return __import__("MySQLdb")
