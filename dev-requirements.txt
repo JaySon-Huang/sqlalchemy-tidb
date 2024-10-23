@@ -2,9 +2,9 @@ alembic==1.13.3
     # via -r dev-requirements.in
 mako==1.3.6
     # via alembic
-markupsafe==3.0.2
+markupsafe
     # via mako
-sqlalchemy==1.4.54
+sqlalchemy==1.4.51
     # via
     #   -r dev-requirements.in
     #   alembic
